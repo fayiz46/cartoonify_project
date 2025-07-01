@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cartoonify Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #87CEEB; /* Sky blue */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px #555;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #90EE90; /* Light green */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #32CD32; /* Darker green on hover */
+        }
+
+        img {
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #ffffff;
+            text-shadow: 1px 1px 2px #555;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Cartoonify Your Image</h1>
+    <form action="/cartoonify/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required><br>
+        <button type="submit">Cartoonify</button>
+    </form>
+
+    {% if original_img %}
+        <h2>Original Image</h2>
+        <img src="{{ original_img }}" width="300">
+    {% endif %}
+
+    {% if result_img %}
+        <h2>Cartoonified Image</h2>
+        <img src="{{ result_img }}" width="300">
+    {% endif %}
+</body>
+</html>
